@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Functions</title>
+     <script type="text/javascript">
+     /*
+     var add = function(a,b) { return a + b; };
+
+     document.write (add(10,20));
+     
+     */
+     
+     /*
+     // IIFE 
+
+     ( function() { document.write("IIFE");})();
+
+     */
+     
+     function totalNumbers(){
+        var total = 0;
+        for (var i = 0; i < arguments.length ; i ++)
+        {
+            tota += arguments[i];
+        }
+        return total;
+     }
+
+     document.write( totalNumbers(10,20,30) + "<p/>");
+     
+     document.write( totalNumbers(10,20,30,50,67));
+     
+/*     
+
+     var person = { firstName : "Srikanth" ,  lastName : "Pragada",
+           fullname : function() {
+              return  this.firstName + " " + this.lastName;
+           }
+     };
+
+     document.write( person.fullname());
+
+     function outer(name) {
+        var inner =  function()
+        {
+            return  name.toUpperCase();
+        };
+
+        return inner;
+
+     };
+
+     var fun  = outer("Srikanth");
+
+     document.write( fun());
+
+     */
+     
+     /*
+      // simple function
+      function f1() {
+        document.write("<p/>Function f1()");
+      }
+
+      // function with parameter
+      function f2(msg) {
+          document.write
+          ("<p/>Function f2() with paramter " + msg);
+      }
+
+      f2("Good Morning");
+
+      f1();
+
+      // function pointer
+      var f = f1; // make f point to function f1()
+
+      f(); // call function f1 using pointer
+
+      // anonymous function
+      var fun = function(msg){
+                  // anonymous function
+                  document.write("<h2>"+ msg + "</h2>")
+                };
+
+      fun("Hello");
+
+      // self invoking function()
+
+      (function() {
+          document.write("<h2>Self-Invoked Function </h2>");
+      })();
+
+      // function variable number of arguments
+      document.write(
+        "<h2>Total : " + sum(10,20,30,40) + "</h2>");
+
+      document.write(
+        "<h2>Total : " + sum("10","82") + "</h2>");
+
+      var tot = sum("10",20,30);
+
+      document.write( typeof(tot) +  ":" + tot + "<p/>");
+
+      function sum(a,b,c) {
+         document.write( a + ":" + b + ":" + c + "<p/>");
+
+         var total=0;
+
+         for ( i = 0; i < arguments.length; i ++)
+                total += arguments[i];
+
+         return total;
+      }
+*/
+
+      // pass by value demo
+      function  swap(a,b) {
+           var t = a;
+           a = b;
+           b = t;
+           document.write( "<p/>" + a  + ":" + b + "<p/>");
+      }
+/*
+      var x = 10, y = 20;
+
+      swap(x,y);
+
+      document.write("<p/>x = " + x + " Y = " + y );
+
+
+      // pass by reference for objects
+
+      var person = { name :"Pranav", age : 13};
+      var student = { name :"Pranav", age : 41};
+
+      change(person);
+      change(student);
+
+      document.write("<p/>Age : " + person.age);
+      document.write("<p/>Age : " + student.age);
+
+      function change(p)
+      {
+          p.age++;
+      }
+
+*/
+
+     </script>
+</head>
+<body>
+
+
+
+</body>
+
