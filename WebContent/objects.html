@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+    
+        var product = { "name" : "Abc", "price" : 2000};
+        product.qty = 20;
+        
+        product.print = function() {
+        	document.write("Function");
+        };
+        
+        product.print();
+      
+
+        function Course(name, fee, duration) {
+            this.name = name;
+            this.fee = fee;
+            this.duration = duration;
+
+            this.toString = function() { 
+                return name + ":" + fee + ":" + duration + ":" + this.courseFee();
+            };
+
+            this.courseFee = function () {
+                return this.fee + this.fee *  15 / 100;
+            };
+         
+        }
+
+        var c1 = new Course("Java", 4000, 40);
+        
+       
+        document.write(c1.name + "<br/>");
+        document.write(c1.toString() + "<br/>");
+        document.write(c1.courseFee() + "<br/>");
+        
+        /*
+        var c2 = new Course("JavaEE", 5000, 40);
+        var c3 = new Course("Oracle", 3000, 40);
+        
+        document.write(c2.toString() + "<p/>");
+        document.write(c3.toString());
+        
+        */
+
+     </script>
+</head>
+<body>
+
+</body>
+</html>
