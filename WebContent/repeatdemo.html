@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular1.5.js"></script>
+    <script>
+        var module = angular.module("demo", []);
+
+        module.controller("DemoController",
+         function ($scope) {
+             $scope.names = ["Scott", "Tom", "Bob", "Tim"];
+             
+             $scope.name = "";
+             $scope.add = function () {
+                 $scope.names.push($scope.name);
+             };
+             
+             /*
+
+             $scope.delete = function () {
+                 var result = confirm("Do you really want to delete?");
+                 if (!result)
+                     return;
+
+                 var pos = $scope.names.indexOf($scope.name);
+                 if (pos == -1)
+                     alert("Sorry! Name not found!");
+                 else
+                     $scope.names.splice(pos, 1);
+             };
+             
+             */
+        });
+ 
+    </script>
+</head>
+<body ng-app="demo">
+    <div ng-controller="DemoController">
+         <h2>Names</h2>
+         <ul>
+         <li ng-repeat="n in names">
+               {{n}}
+         </li>
+         </ul>
+      
+         Name : <input type="text" ng-model="name" />
+         <button ng-click="add()">Add</button>
+         
+         
+         
+         <!--
+          <button ng-click="delete()">Delete</button>
+        -->
+
+    </div>
+
+</body>
+</html>

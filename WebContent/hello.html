@@ -10,11 +10,24 @@
 
 	app.controller('FirstController', function($scope) {
 		$scope.name = 'World';
+		$scope.toUpper = function() {
+			 $scope.name = $scope.name.toUpperCase();
+		};
+		
+		$scope.clear = function() {
+			 $scope.name = "";
+		};
 	});
+	
+	
 </script>
 </head>
 
 <body ng-controller="FirstController">
+    Your Name : <input type="text" ng-model="name" />
+    <p/>
+    <button ng-click="toUpper()">Upper</button>
+    <button ng-click="clear()">Clear</button>
 	<h1>Hello {{name}}!</h1>
 </body>
 

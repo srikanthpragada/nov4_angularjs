@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>Discount Calculation</title>
+<style>
+  .ng-dirty { color:red }
+</style>
+<script src="angular1.5.js"></script>
+<script>
+	var app = angular.module('discount', []);
+
+	app.controller('DiscountController', function($scope) {
+		 $scope.amount = 0;
+		 $scope.rate = 10;
+	});
+	
+	
+</script>
+</head>
+
+<body ng-app="discount">
+ <div ng-controller="DiscountController">
+    Amount : <input type="text" ng-model="amount" />
+    Discount Rate  : <input type="text" ng-model="rate" />
+    <p/>
+	<h1>Discount : {{ amount * rate / 100 }}</h1>
+ </div>
+</body>
+
+</html>
