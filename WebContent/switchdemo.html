@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular1.5.js"></script>
+    <script>
+        var module = angular.module("switchdemo", []);
+        module.controller("SwitchController",
+             function ($scope) {
+                 $scope.company = "a";
+                 $scope.discount = 20;
+                 $scope.showFooter = false;
+             }
+       );
+    </script>
+</head>
+<body ng-app="switchdemo">
+    <div ng-controller="SwitchController">
+        Select Company :
+        <select ng-model="company">
+            <option value="a">Adidas</option>
+            <option value="n">Nike</option>
+            <option value="y">Yonex</option>
+        </select>
+        <p />
+        <h4>You are elegible for a discount
+            <span ng-switch on="company">
+                <span ng-switch-when="a">20</span>
+                <span ng-switch-when="n">30</span>
+                <span ng-switch-default>25</span>
+  
+            </span>
+        </h4>
+        <h1  ng-show="false">Srikanth Technologies</h1>
+    </div>
+</body>
+</html>

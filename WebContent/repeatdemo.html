@@ -11,25 +11,28 @@
              $scope.names = ["Scott", "Tom", "Bob", "Tim"];
              
              $scope.name = "";
+             // Adds a name to names
              $scope.add = function () {
                  $scope.names.push($scope.name);
              };
-             
-             /*
 
+             // Deletes name given in textbox
              $scope.delete = function () {
                  var result = confirm("Do you really want to delete?");
                  if (!result)
                      return;
 
-                 var pos = $scope.names.indexOf($scope.name);
+                 var pos = $scope.names.indexOf($scope.name); // look for index of the name
                  if (pos == -1)
                      alert("Sorry! Name not found!");
                  else
-                     $scope.names.splice(pos, 1);
+                     $scope.names.splice(pos, 1); // delete element from pos
              };
              
-             */
+             $scope.sort = function () {
+                 $scope.names.sort();
+             };
+             
         });
  
     </script>
@@ -45,12 +48,9 @@
       
          Name : <input type="text" ng-model="name" />
          <button ng-click="add()">Add</button>
-         
-         
-         
-         <!--
-          <button ng-click="delete()">Delete</button>
-        -->
+         <button ng-click="sort()">Sort</button>
+         <button ng-click="delete()">Delete</button>
+
 
     </div>
 

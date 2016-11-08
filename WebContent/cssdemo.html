@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<style>
+.big {
+	font-size: 20pt;
+}
+
+.redwhite {
+	background-color: red;
+	color: white;
+}
+
+.yellowblue {
+	background-color: yellow;
+	color: blue;
+}
+</style>
+<script src="angular1.5.js"></script>
+<script>
+	angular.module("test", []).controller("TestController", function($scope) {
+		$scope.showBig = true;
+		$scope.evenstyle = "redwhite";
+		$scope.names = [ "Java", "JavaScript", "C#", "Python", "Ruby" ];
+
+		$scope.toggleTheme = function() {
+			if ($scope.evenstyle === "redwhite")
+				$scope.evenstyle = "yellowblue";
+			else
+				$scope.evenstyle = "redwhite";
+		}
+	});
+</script>
+</head>
+<body ng-app="test">
+
+	<div ng-controller="TestController">
+		<span ng-class="{big : showBig}">Srikanth Technologies</span>
+		<p />
+
+		<div ng-repeat="n in names" ng-class-even="evenstyle"
+			ng-class="{big : showBig}">{{ n }}</div>
+		<p />
+		<button ng-click="toggleTheme()">Toogle Theme</button>
+		<p />
+		<input type="checkbox" ng-model="showBig" />Big Letters
+	</div>
+
+</body>
+</html>
