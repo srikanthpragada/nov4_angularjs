@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        
+    </style>
+    <script src="../angular.js"></script>
+    <script>
+        angular.module("test", [])
+        .controller("TestController", function ($scope) {
+            $scope.names = ["JavaScript", "Angular", 'jQuery', 'Backbone', 'Knockout'];
+            $scope.courses =
+                    [
+                      { name: 'Java Language', duration: 40 },
+                      { name: 'MS.NET (C# and Asp.Net)', duration: 100 },
+                      { name: 'HTML5, JavaScript, jQuery, AngularJS', duration: 20 },
+                      { name: 'Oracle', duration: 30 }
+                    ];
+
+            $scope.pattern = "";
+
+            $scope.longCourses = function (c, idx) {
+                return c.duration > 25;
+
+            };
+
+            $scope.searchByName = function (c, idx) {
+               return c.name.indexOf($scope.pattern) >= 0;
+            };
+          }
+        );
+    </script>
+</head>
+<body ng-app="test">
+      <div ng-controller="TestController">
+          <div ng-repeat="n in names | orderBy :  '-' ">
+              {{ n }}
+          </div>
+
+          <p/>
+          Search Course : <input type="text" ng-model="pattern"/> 
+          <p/>
+
+          <table border="1">
+              <tr>
+                  <th>Course </th>
+                  <th>Duration</th>
+              </tr>
+
+              <tr ng-repeat="c in courses | filter : searchByName | orderBy :  'duration' : 'reverse' as results ">
+                  <td> {{ c.name }}</td>
+                  <td> {{ c.duration }}</td>
+              </tr>
+          </table>
+
+          <div ng-if="results.length ==  0">
+              Sorry! No courses found!
+          </div>
+      </div>
+
+</body>
+</html>

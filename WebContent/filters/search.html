@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search Names</title>
+    <style>
+
+    </style>
+    <script src="../angular.js"></script>
+    <script>
+        angular.module("search", [])
+        .controller("SearchController", function($scope) {
+            $scope.searchName = "Java";
+            $scope.courses =
+                     [{ name: 'Java Language', duration: 40 },
+                      { name: 'MS.NET (C# and Asp.Net)', duration: 100 },
+                      { name: 'HTML5, JavaScript, jQuery, AngularJS', duration: 20 },
+                      { name: 'Java EE ', duration: 40 },
+                      { name: 'Java EE Frameworks ', duration: 30 },
+                      { name: 'C Language ', duration: 35 },
+                      { name: 'MongoDB ', duration: 20 },
+                      { name: 'Oracle', duration: 30 }];
+         }
+       );
+        
+    </script>
+</head>
+<body ng-app="search">
+    <div ng-controller="SearchController">
+        Course Name : <input type="text" ng-model="searchName" /> <p/>
+        <table border="1">
+            <tr>
+                <th>Course </th>
+                <th>Duration</th>
+            </tr>
+
+            <tr ng-repeat="c in courses | filter : { name : searchName } ">
+                <td> {{ c.name }}</td>
+                <td> {{ c.duration }}</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

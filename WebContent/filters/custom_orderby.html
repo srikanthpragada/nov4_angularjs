@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Customer OrderBy</title>
+<script src="../angular1.5.js"></script>
+<script>
+        angular.module("test", [])
+        .controller("TestController", function ($scope) {
+
+            $scope.names = ['name','duration','online'];
+            $scope.field ="name";
+            $scope.courses =
+                     [{ name: 'Java Language', duration: 40 , online : false},
+                      { name: 'MS.NET (C# and Asp.Net)', duration: 100 , online : false},
+                      { name: 'jQuery, AngularJS', duration: 20, online : true },
+                      { name: 'Oracle', duration: 30, online : true }];
+          } // controller 
+        );
+    </script>
+</head>
+<body ng-app="test">
+	<div ng-controller="TestController">
+		Select Order : <select ng-model="field"
+			ng-options="value for value in names"></select>
+			
+	    <input type="checkbox">Reverse		
+		<p />
+		
+
+		<table border="1" width="100%">
+			<tr>
+				<th>Course</th>
+				<th>Duration</th>
+				<th>Online</th>
+			</tr>
+
+			<tr ng-repeat="c in courses |  orderBy : field ">
+				<td>{{ c.name }}</td>
+				<td>{{ c.duration }}</td>
+				<td>{{ c.online }}</td>
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>

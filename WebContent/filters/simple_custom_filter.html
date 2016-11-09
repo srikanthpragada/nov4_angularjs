@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+
+    </style>
+    <script src="../angular.js"></script>
+    <script>
+        angular.module("test", [])
+        .filter("curly", 
+               function() {
+                   return function (input) {
+                       return '{' + input + '}';
+                   };
+               }
+        ) 
+        .filter("space", 
+               function () {
+                   //  count is optional. it specifies no. of chars to be inserted 
+                   return function (input, count) {
+                       if (!count)
+                           count = 1;
+
+                       var st = "";
+                       for(var i = 0 ; i < input.length ; i ++)
+                       {
+                           st = st + input.charAt(i) + ".".repeat(count);
+                       }
+                       return st;
+                   };
+               }
+        )
+        .controller("TestController", function ($scope) {
+            $scope.name = "AngularJS";
+        }
+      );
+
+    </script>
+</head>
+<body ng-app="test">
+    <div ng-controller="TestController">
+        {{ name | curly | uppercase}}
+        <p/>
+        {{ 'Angular' | space : 2 }}
+    </div>
+
+</body>
+</html>
