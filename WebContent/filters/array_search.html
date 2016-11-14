@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Course Search</title>
     <style>
         
     </style>
-    <script src="../angular.js"></script>
+    <script src="../angular1.5.js"></script>
     <script>
         angular.module("test", [])
         .controller("TestController", function ($scope) {
@@ -20,11 +20,6 @@
 
             $scope.pattern = "";
 
-            $scope.longCourses = function (c, idx) {
-                return c.duration > 25;
-
-            };
-
             $scope.searchByName = function (c, idx) {
                return c.name.indexOf($scope.pattern) >= 0;
             };
@@ -34,10 +29,11 @@
 </head>
 <body ng-app="test">
       <div ng-controller="TestController">
+      <!-- 
           <div ng-repeat="n in names | orderBy :  '-' ">
               {{ n }}
           </div>
-
+ -->
           <p/>
           Search Course : <input type="text" ng-model="pattern"/> 
           <p/>

@@ -5,7 +5,7 @@
     <style>
 
     </style>
-    <script src="../angular.js"></script>
+    <script src="../angular1.5.js"></script>
     <script>
         angular.module("test", [])
         .filter("curly", 
@@ -40,8 +40,6 @@
 </head>
 <body ng-app="test">
     <div ng-controller="TestController">
-        {{ name | curly | uppercase}}
-        <p/>
         {{ 'Angular' | space : 2 }}
     </div>
 
