@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular1.5.js"></script>
+    <script>
+
+        function Contact(name, mobile) {
+            this.name = name;
+            this.mobile = mobile;
+        };
+
+
+        var contactsModule = angular.module("contactsApp", []);
+
+        var cc = function ($scope) {
+            $scope.contacts = new Array();
+            $scope.contacts.push(new Contact("Srikanth", "9059057000"));
+            $scope.contacts.push(new Contact("Manu", "9393221100"));
+            $scope.name = "";
+            $scope.mobile = "";
+            $scope.sortField = "name";
+
+            $scope.addContact = function () {
+                $scope.contacts.push(new Contact($scope.name, $scope.mobile));
+            };
+
+            $scope.deleteContact = function (pos) {
+                // take confirmation
+                var result = confirm("Do you really want to delete contact at position  : " + pos + "??");
+                if (!result)
+                    return;
+
+                $scope.contacts.splice(pos, 1);
+
+                /*
+                // find position of the 
+                for (i = 0; i < $scope.contacts.length;  i++) {
+                    var contact = $scope.contacts[i];
+                    if (contact.name === name) {
+                        $scope.contacts.splice(i, 1);
+                        break;
+                    }
+                }
+                */
+            };
+        };
+
+        contactsModule.controller("ContactsController", ["$scope",cc]);
+    </script>
+</head>
+<body ng-app="contactsApp">
+    <div ng-controller="ContactsController">
+          <h2>Add New Contact</h2>
+          Contact Name  : <br/>
+          <input type="text" ng-model="name"/>
+          <p/>
+          Mobile Number :  <br />
+          <input type="text" ng-model="mobile" />
+          <p/>
+          <input type="button" ng-click="addContact()" value="Add" />
+          <h2>Existing Contacts</h2>
+          <p/>
+
+          <table border="1">
+               <tr><th>Name</th> <th>Mobile</th> <th></th></tr>
+               <tr ng-repeat="contact in contacts | orderBy:sortField">
+                      <td> {{ contact.name }}</td>
+                      <td> {{ contact.mobile }}</td>
+                      <td> <input type="button" ng-click="deleteContact($index)" value="Delete"  /></td>
+               </tr>
+          </table>
+    </div>
+</body>
+</html>
