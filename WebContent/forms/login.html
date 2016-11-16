@@ -18,7 +18,6 @@
         $scope.password = "";
         
         $scope.process = function () {
-             // alert ($scope.LoginForm.$submitted)
              alert("Form has been submitted! Will go to login process...");
         }
     });
@@ -29,7 +28,7 @@
 <body ng-app="login">
     <h2>Login</h2>
 
-     <form name="loginForm" method="post"  action="login"
+     <form name="loginForm" 
            ng-controller="LoginController" novalidate 
            ng-submit="process()">
            
