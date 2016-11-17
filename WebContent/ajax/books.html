@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Books</title>
+    <script src="../angular1.5.js"></script>
+    <script>
+        var app = angular.module("books", []);
+        // controller 
+        var BooksController = function ($scope, $http,$log) {
+            var onSuccess = function (result) {
+                $scope.books = result.data;
+            };
+            var onError = function (error) {
+                $log.error("Error : " + error.statusText);
+            };
+
+            $http.get("books.json").then(onSuccess, onError);
+        };
+
+        app.controller("BooksController", BooksController);
+
+    </script>
+</head>
+<body ng-app="books">
+    <div ng-controller="BooksController">
+        Count : {{ books.length }}
+        <h1>Books Catalog</h1>
+        <ul>
+            <li ng-repeat="book in books">
+                <h2>{{book.title}} - {{book.author}}</h2>
+                <img ng-src="images/{{book.image}}"  width="200" height="300" />
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -13,7 +13,6 @@ app.service('DateService',
     }
 );
 
-
 app.factory('TimeService',
     // factory function that returns an instance of service instance 
     function () {
@@ -27,9 +26,6 @@ app.factory('TimeService',
         }
     }
 );
-
-
-
 
 var myController = function ($scope, DateService, TimeService) {
     $scope.year = DateService.year();

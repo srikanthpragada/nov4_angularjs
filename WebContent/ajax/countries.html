@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Countries</title>
+<script src="angular.js"></script>
+<script>
+	var app = angular.module("countries", []);
+	// controller 
+	var CountriesController = function($scope, $http) {
+		var onSuccess = function(data) {
+			$scope.countries = data.data;
+		};
+		
+		var onError = function(error) {
+			$scope.result = error;
+		};
+
+		$http.get("https://restcountries.eu/rest/v1/all").then(onSuccess, onError);
+	};
+
+	app.controller("CountriesController", CountriesController);
+</script>
+</head>
+<body ng-app="countries">
+	<div ng-controller="CountriesController">
+		Count : {{ countries.length }}
+		<h1>List of Countries </h1>
+		<ul>
+			<li ng-repeat="country in countries">
+				<h2>{{ country.name}}, {{ country.capital}}</h2>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

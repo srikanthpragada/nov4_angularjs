@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../angular.js"></script>
+
+    <script type="text/javascript">
+
+        (function () {
+            var app = angular.module("githubviewer", []);
+            // controller 
+            var main = function ($scope, $http) {
+
+                var onSuccess = function (response) {
+                    $scope.login = response.data.login;
+                    $scope.imageurl = response.data.avatar_url;
+                    $scope.created = response.data.created_at;
+
+                    //alert(response)
+                };
+
+                var onError = function (error) {
+                    $scope.result = error;
+                    //alert(error);
+                };
+
+                $http.get("https://api.github.com/users/srikanthpragada").then(onSuccess, onError);
+
+            };
+
+            app.controller("main", ["$scope", "$http", main]);
+
+        }());
+
+    </script>
+</head>
+<body ng-app="githubviewer">
+    <div ng-controller="main">
+         <h2> {{login}}</h2>
+         <h3>Created At : {{created}}</h3>
+         <img src="{{imageurl}}" />
+    </div>
+</body>
+</html>

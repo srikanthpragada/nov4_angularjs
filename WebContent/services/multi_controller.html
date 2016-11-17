@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Customer Service Demo</title>
+    <script src="../angular1.5.js"></script>
+    <script>
+    
+    var app = angular.module('app', []);
+    
+    var fc = function ($scope) {
+        $scope.message = "First Controller";
+    }
+    
+    var sc = function ($scope) {
+        $scope.message = "Second Controller";
+    }
+    
+    app.controller("FirstController", fc);
+    app.controller("SecondController", sc);
+    
+    
+    </script>
+    
+</head>
+<body>
+
+  <div ng-controller="FirstController">
+        {{ message }}      
+  </div>
+  
+  <div ng-controller="SecondController">
+        {{ message }}      
+  </div>
+      
+</body>
+</html>

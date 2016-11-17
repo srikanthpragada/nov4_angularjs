@@ -1,0 +1,30 @@
+[
+    {
+        "title": "AngularJS",
+        "author": "Brad Green",
+        "price": 500,
+		"image": "angular.jpg"
+    },
+
+    {
+        "title": "jQuery in Action",
+        "author": "Kartz",
+        "price": 300,
+		"image": "jquery.jpg"
+      
+    },
+
+    {
+        "title": "Java Persistance with Hibernate",
+        "author": "Gavin King",
+        "price": 550,
+   	    "image": "hibernate.jpg"
+
+    },
+	{
+        "title": "Bootstrap",
+        "author": "July Spurlock",
+        "price": 225,
+    	"image": "bootstrap.jpg"
+    }
+]
