@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>GitHub User Viewer</title>
+    <script src="../angular.js"></script>
+    <script src="../angular-resource.js"></script>
+
+    <script type="text/javascript">
+        
+            var app = angular.module("countries", ['ngResource']);
+            // controller 
+            var CountriesController = function ($scope, $resource) {
+                $scope.country = "";
+                var GroupKT = $resource("http://services.groupkt.com/country/get/all");
+                GroupKT.get(
+                       {},  // param data 
+                       function (data) {  // success function 
+                           $scope.countries = data.RestResponse.result;
+                       }
+                       ,
+                       function (data) { // error function
+                       }
+                );
+
+                $scope.getCities = function () {
+                    var GroupKT = $resource("http://services.groupkt.com/state/get/:country/all");
+                    GroupKT.get(
+                           {country : $scope.country},  // param data 
+                           function (data) {  // success function 
+                               $scope.states = data.RestResponse.result;
+                           }
+                           ,
+                           function (data) { // error function
+                           }
+                    );
+                };
+            };
+            app.controller("CountriesController", ["$scope", "$resource", CountriesController]);
+    </script>
+</head>
+<body ng-app="countries">
+    <div ng-controller="CountriesController">
+        <h2>List Of Contries</h2>
+        <select ng-change="getCities()" ng-model="country">
+            <option value="">Select Country</option>
+            <option ng-repeat="country in countries" value="{{country.alpha3_code}}">{{country.name }}</option>
+        </select>
+        <p/>
+        <select>
+            <option value="">Select State</option>
+            <option ng-repeat="state in states" value="{{state.abbr}}">{{state.name}}</option>
+        </select>
+
+    </div>
+</body>
+</html>

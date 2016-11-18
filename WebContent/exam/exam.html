@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="exam">
+<head>
+    <title></title>
+    <script src="../angular1.5.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .header {
+            color:red;
+            font-weight:bold;
+            font-family:Verdana;
+            font-size:14pt;
+        }
+        .question {
+            padding-top :  5px;
+            padding-bottom: 5px;
+            background-color: black;
+            color: white;
+            font-size: 14pt;
+            font-family: Arial;
+        }
+        .answer {
+            color:blue;
+            font-size:14pt;
+            font-family:arial;
+        }
+
+        .result {
+            background-color:blue;
+            color:white;
+            font-weight :bold;
+        }
+
+    </style>
+</head>
+<body ng-controller="ExamController">
+
+    <div ng-show="progress">
+        <div class="header">Question :  {{ pos +1 + "/" + length }}</></div>
+        <p/>
+        <div class="question">
+           <pre>{{ question.question}}</pre>
+        </div>
+        <p />
+        <div class="answer">
+            <input type="radio" ng-model="question.ans" value="1" />  {{ question.ans1}}
+            <p/> 
+            <input type="radio" ng-model="question.ans" value="2" /> {{ question.ans2}} 
+            <p/>
+            <input type="radio" ng-model="question.ans" value="3" /> {{ question.ans3}} 
+        </div>
+
+        <p />
+        <button ng-click="next()" ng-disabled="isLast()">Next</button>
+        <button ng-click="prev()" ng-disabled="isFirst()">Previous</button>
+        <button ng-click="process()">Finish</button>
+    </div>
+    <div ng-hide="progress">
+
+        <div class="question">Examination Result </div>
+        <p/>
+        <div class="answer">
+            <table>
+                <tr>
+                    <td>
+                        Total no. of questions 
+                    </td>
+                    <td class="result">
+                        {{ length }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        No. of correct answers 
+                    </td>
+                    <td class="result">
+                        {{correctCount}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Result 
+                    </td>
+                    <td class="result">
+                        {{ result }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p/>
+        <button ng-click="takeExam()">Retake Exam</button>
+    </div>
+</body>
+</html>

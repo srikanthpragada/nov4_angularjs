@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>GitHub User Viewer</title>
+    <script src="../angular1.5.js"></script>
+    <script src="../angular-resource.js"></script>
+
+    <script type="text/javascript">
+        
+            var app = angular.module("githubviewer", ['ngResource']);
+            // controller 
+            var fun = function ($scope, $resource) {
+                $scope.username = "srikanthpragada";
+                $scope.getDetails = function () {
+                    $scope.found = $scope.notfound = false;
+                    var Github = $resource("https://api.github.com/users/:user");
+                    Github.get(
+                           { user: $scope.username },  // param data 
+                           function (data) {  // success function 
+                               $scope.user = data;
+                               $scope.found = true;
+                               // get repo details 
+                           }
+                           ,
+                           function (data) { // error function
+                               $scope.notfound = true; 
+                           }
+                     );
+                }
+             };
+            app.controller("GHViewerController", ["$scope", "$resource", fun]);
+    </script>
+</head>
+<body ng-app="githubviewer">
+    <div ng-controller="GHViewerController">
+         <h2>GitHub User Viewer</h2>
+         Enter username : <input type="text" ng-model="username" /> 
+         <button ng-click="getDetails()">Get Details</button>
+
+        <p/>
+        <div ng-show="found">
+            <h2 ng-bind="user.name"></h2>
+            <h3 ng-bind="user.created_at"></h3>
+            <img ng-src="{{ user.avatar_url}}" />
+        </div>
+        <p/>
+        <h3 ng-show="notfound">Sorry! User not found!</h3>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+[
+  { "question" : "Which  of the following is true about AngularJS?",
+    "ans1" : "JavaScript Library",
+	"ans2" : "MVC Framework in Javascript",
+	"ans3" : "CSS Framework",
+	"ans" : "",
+	"cans" : "2"
+  },
+    { "question" : "Which of the following is used to contain code that is common to multiple controllers?",
+    "ans1" : "Module",
+	"ans2" : "Service",
+	"ans3" : "Directive",
+	"ans" : "",
+	"cans" : "2"
+  },
+    { "question" : "Which directive is used for two-way binding?",
+    "ans1" : "ng-bind",
+	"ans2" : "ng-change",
+	"ans3" : "ng-model",
+	"ans" : "",
+	"cans" : "3"
+  },
+    { "question" : "Which of the following is used to select controller and template based on URL?",
+    "ans1" : "Routing",
+	"ans2" : "AJAX",
+	"ans3" : "Filters",
+	"ans" : "",
+	"cans" : "1"
+  }
+
+]

@@ -1,0 +1,24 @@
+[
+
+    {
+        "title": "AngularJS",
+        "author": "Brad Green",
+        "price": 500,
+        "image": "angularjs.jpg"
+    },
+
+    {
+        "title": "jQuery in Action",
+        "author": "Kartz",
+        "price": 300,
+        "image": "jquery.jpg"
+    },
+
+    {
+        "title": "Hibernate",
+        "author": "Gavin King",
+        "price": 550,
+        "image": "hibernate.jpg"
+    }
+
+]

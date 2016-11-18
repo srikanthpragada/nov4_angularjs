@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../angular.js"></script>
+    <script src="../angular-resource.js"></script>
+    <script>
+        var app = angular.module("restdemo", ['ngResource']);
+        app.controller('BooksController', ['$scope','$resource',
+            function ($scope,$resource) {
+                Books = $resource("books.json");
+                $scope.books = Books.query();
+            }
+        ]);
+    </script>
+</head>
+<body ng-app="restdemo">
+
+    <h1>Books Catalog</h1>
+
+    <ul ng-controller="BooksController">
+
+        <li ng-repeat="book in books">
+              <h2>{{book.title}}</h2>
+              <img ng-src="{{book.image}}" width="100" height="100" />
+        </li>
+    </ul>
+
+
+
+
+</body>
+</html>
